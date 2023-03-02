@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Picture Loop Example</title>
+	<title>Photo Gallery</title>
 </head>
 <body>
-	<h1>Picture Loop Example</h1>
+	<h1>Photo Gallery</h1>
 	<?php
-		for ($i = 1; $i <= 5; $i++) {
-			echo '<img src="https://picsum.photos/id/' . $i . '/200" alt="Picture ' . $i . '">';
+		$dir = "images/";
+		$files = scandir($dir);
+		foreach ($files as $file) {
+			if (in_array($file, array(".", ".."))) continue;
+			echo "<img src='$dir/$file' alt='$file'>";
 		}
 	?>
 </body>
